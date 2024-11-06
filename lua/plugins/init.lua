@@ -51,6 +51,33 @@ local default_plugins = {
   },
 
   {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    init = function()
+      local harpoon = require("harpoon")
+      harpoon:setup()
+    end,
+    config = function(_)
+      local harpoon = require("harpoon")
+      vim.keymap.set("n", "<leader>hm", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+      vim.keymap.set("n", "<leader>ha", function() harpoon:list():add() end)
+      vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end,
+        { desc = "go to harpoon tab 1"}
+      )
+      vim.keymap.set("n", "<leader>2", function() harpoon:list():select(2) end,
+        { desc = "go to harpoon tab 2"}
+      )
+      vim.keymap.set("n", "<leader>3", function() harpoon:list():select(3) end,
+        { desc = "go to harpoon tab 3"}
+      )
+      vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end,
+        { desc = "go to harpoon tab 4"}
+      )
+    end
+  },
+
+  {
     "NvChad/nvim-colorizer.lua",
     init = function()
       require("core.utils").lazy_load "nvim-colorizer.lua"
