@@ -199,9 +199,10 @@ M.lspconfig = {
     },
 
     ["gr"] = {
-      function()
-        vim.lsp.buf.references()
-      end,
+      -- function()
+      --   vim.lsp.buf.references()
+      -- end,
+      "<cmd>Telescope lsp_references<CR>",
       "LSP references",
     },
 
