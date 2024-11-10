@@ -61,8 +61,8 @@ M.general = {
     },
 
     [":"] = { "<cmd>FineCmdline<CR>", "Open floating command line" },
-    ["<leader>vs"] = { "<cmd>vsplit<CR>", "Split a buffer vertically" },
-    ["<leader>hs"] = { "<cmd>split<CR>", "Split a buffer horizontally" }
+    ["<leader>sv"] = { "<cmd>vsplit<CR>", "Split a buffer vertically" },
+    ["<leader>sh"] = { "<cmd>split<CR>", "Split a buffer horizontally" }
 
   },
 
