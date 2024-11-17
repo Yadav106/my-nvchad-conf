@@ -177,6 +177,13 @@ M.lspconfig = {
       "LSP signature help",
     },
 
+    ["<leader>lr"] = {
+      function ()
+        vim.cmd("LspRestart")
+      end,
+      "LSP Restart"
+    },
+
     ["<leader>D"] = {
       function()
         vim.lsp.buf.type_definition()

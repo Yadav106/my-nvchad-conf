@@ -60,3 +60,16 @@ lspconfig.lwc_ls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 });
+
+lspconfig.sqlls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = {"sql", "mysql"}
+})
+
+lspconfig.sqls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = {"sql", "mysql"}
+})
+
