@@ -20,7 +20,7 @@ local plugins = {
   },
   {
     "neovim/nvim-lspconfig",
-    config = function ()
+    config = function()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
     end,
@@ -35,19 +35,19 @@ local plugins = {
   -- },
   {
     "rust-lang/rust.vim",
-    ft="rust",
-    init = function ()
+    ft = "rust",
+    init = function()
       vim.g.rustfmt_autosave = 1
     end
   },
   {
     "simrat39/rust-tools.nvim",
-    ft="rust",
+    ft = "rust",
     dependencies = "neovim/nvim-lspconfig",
-    opts=function ()
+    opts = function()
       return require "custom.configs.rust-tools"
     end,
-    config = function (_, opts)
+    config = function(_, opts)
       require('rust-tools').setup(opts)
     end,
   },
@@ -75,7 +75,7 @@ local plugins = {
   {
     "mfussenegger/nvim-dap",
     keys = {
-      { "<leader>db", function () require('dap').toggle_breakpoint() end, desc="Toggle Breakpoint" },
+      { "<leader>db", function() require('dap').toggle_breakpoint() end, desc = "Toggle Breakpoint" },
     },
     dependencies = {
       -- fancy UI for the debugger
@@ -83,8 +83,8 @@ local plugins = {
         "rcarriga/nvim-dap-ui",
         -- stylua: ignore
         keys = {
-          { "<leader>du", function() require("dapui").toggle({ }) end, desc = "Dap UI" },
-          { "<leader>de", function() require("dapui").eval() end, desc = "Eval", mode = {"n", "v"} },
+          { "<leader>du", function() require("dapui").toggle({}) end, desc = "Dap UI" },
+          { "<leader>de", function() require("dapui").eval() end,     desc = "Eval",  mode = { "n", "v" } },
         },
         opts = {},
         config = function(_, opts)
@@ -109,20 +109,20 @@ local plugins = {
   {
     'andweeb/presence.nvim',
     event = "BufEnter",
-    opts = function ()
+    opts = function()
       return require "custom.configs.presence"
     end,
-    config = function (opts)
+    config = function(opts)
       require('presence'):setup(opts)
     end
   },
   {
     'xiyaowong/transparent.nvim',
     event = "BufEnter",
-    opts = function ()
+    opts = function()
       return require "custom.configs.transparent"
     end,
-    config = function (opts)
+    config = function(opts)
       return require('transparent').setup(opts)
     end
   },
@@ -136,10 +136,10 @@ local plugins = {
       "TmuxNavigatePrevious",
     },
     keys = {
-      { "<C-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-      { "<C-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-      { "<C-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-      { "<C-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+      { "<C-h>",  "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<C-j>",  "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<C-k>",  "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<C-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
       { "<C-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
@@ -148,50 +148,8 @@ local plugins = {
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "BufEnter",
     config = function()
-        require("nvim-surround").setup({
-            -- Configuration here, or leave empty to use defaults
-        })
-    end
-  },
-  {
-    "VonHeikemen/fine-cmdline.nvim",
-    requires = {
-      {'MunifTanjim/nui.nvim'}
-    },
-    event = "BufEnter",
-    config = function()
-      require('fine-cmdline').setup({
-        cmdline = {
-          enable_keymaps = true,
-          smart_history = true,
-          prompt = ': '
-        },
-        popup = {
-          position = {
-            row = '10%',
-            col = '50%',
-          },
-          size = {
-            width = '60%',
-          },
-          border = {
-            style = 'rounded',
-          },
-          win_options = {
-            winhighlight = 'Normal:Normal,FloatBorder:FloatBorder',
-          },
-        },
-        hooks = {
-          before_mount = function(input)
-            -- code
-          end,
-          after_mount = function(input)
-            -- code
-          end,
-          set_keymaps = function(imap, feedkeys)
-            -- code
-          end
-        }
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
       })
     end
   },
@@ -201,6 +159,33 @@ local plugins = {
   },
   {
     "heavenshell/vim-jsdoc"
+  },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+      presets = {
+        bottom_search = false,           -- use a classic bottom cmdline for search
+        command_palette = true,         -- position the cmdline and popupmenu together
+        long_message_to_split = true,   -- long messages will be sent to a split
+        inc_rename = false,             -- enables an input dialog for inc-rename.nvim
+        lsp_doc_border = true,          -- add a border to hover docs and signature help
+      },
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+    },
+    init = function()
+      require("notify").setup({
+        background_colour = "#000000"
+      })
+    end
   }
 }
 return plugins

@@ -60,7 +60,6 @@ M.general = {
       "LSP formatting",
     },
 
-    [":"] = { "<cmd>FineCmdline<CR>", "Open floating command line" },
     ["<leader>sv"] = { "<cmd>vsplit<CR>", "Split a buffer vertically" },
     ["<leader>sh"] = { "<cmd>split<CR>", "Split a buffer horizontally" }
 

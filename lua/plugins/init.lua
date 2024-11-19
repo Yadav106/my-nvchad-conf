@@ -313,6 +313,7 @@ local default_plugins = {
       for _, ext in ipairs(opts.extensions_list) do
         telescope.load_extension(ext)
       end
+      telescope.load_extension("noice")
     end,
   },
 
