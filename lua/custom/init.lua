@@ -37,3 +37,33 @@ end
 
 -- Map the function to a command for easy use
 vim.api.nvim_set_keymap('n', '<leader>cp', ':lua CreateClassProperties()<CR>', { noremap = true, silent = true })
+
+-- Uncomment this if you wanna use educationallsp
+--
+-- ---@diagnostic disable-next-line: missing-fields
+-- local client = vim.lsp.start_client {
+--   name = "educationallsp",
+--   cmd = { "/Users/macbook/Desktop/Programming/educationallsp/main" },
+--   on_attach = function(client, bufnr)
+--     local dg_fun = function()
+--       vim.diagnostic.open_float { border = "rounded" }
+--     end,
+--     -- Set up hover mapping
+--     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
+--     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
+--     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
+--     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lf', '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>', { noremap = true, silent = true })
+--   end
+-- }
+--
+-- if not client then
+--   vim.notify "hey, you didn't do the client thing"
+--   return
+-- end
+--
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "markdown",
+--   callback = function ()
+--     vim.lsp.buf_attach_client(0, client)
+--   end,
+-- })
